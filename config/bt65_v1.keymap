@@ -13,6 +13,10 @@
 #define RAISE 1
 #define ADJUST 2
 
+&encoder_1 {
+    status = "okay";
+};
+
 / {
   chosen {
   #ifdef ANSI
@@ -33,6 +37,11 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&bl BL_INC>, <&bl BL_DEC>;
+    };
+    rgb_encoder: rgb_encoder {
+      compatible = "zmk,behavior-sensor-rotate";
+      #sensor-binding-cells = <0>;
+      bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
     };
   };
 
@@ -88,7 +97,7 @@
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans    &trans    &none
         &trans &trans &trans               &trans                             &trans &trans &trans &trans    &trans    &trans
       >;
-      sensor-bindings = <&bl_encoder>;
+      sensor-bindings = <&rgb_encoder>;
     };
     #elif defined(ISO)
     default_layer {
