@@ -16,8 +16,7 @@
 &sensors {
   status = "okay";
   sensors = <&encoder_1 &encoder_2 &encoder_3>;
-}
-
+};
 &encoder_1 {
   status = "okay";
 };
