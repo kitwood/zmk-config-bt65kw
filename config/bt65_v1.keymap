@@ -13,20 +13,6 @@
 #define RAISE 1
 #define ADJUST 2
 
-&sensors {
-  status = "okay";
-  sensors = <&encoder_1 &encoder_2 &encoder_3>;
-};
-&encoder_1 {
-  status = "okay";
-};
-&encoder_2 {
-  status = "okay";
-};
-&encoder_3 {
-  status = "okay";
-};
-
 / {
   chosen {
   #ifdef ANSI
@@ -69,8 +55,8 @@
       bindings = <
         &kp ESC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp  N8   &kp  N9   &kp N0 &kp MINUS &kp EQUAL &kp BSPC &kp C_MUTE
         &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp  I    &kp  O  &kp  P   &kp LBKT &kp RBKT &kp BSLH &kp DEL
-        &kp CLCK   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp  K    &kp  L  &kp SEMI &kp SQT         &kp RET &kp C_VOL_UP
-        &kp LSHFT     &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH   &kp RSHFT   &kp UP &kp C_VOL_DN
+        &kp CLCK   &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp  K    &kp  L  &kp SEMI &kp SQT         &kp RET &kp PG_UP
+        &kp LSHFT     &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH   &kp RSHFT   &kp UP &kp PG_DN
         &kp LCTRL &kp LGUI &kp LALT            &kp SPACE                   &kp GLOBE &mo RAISE &kp RCTRL &kp LEFT &kp DOWN &kp RIGHT
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -84,11 +70,11 @@
         // |  CTL  |  WIN  |  ALT  |            SPACE               | GLB |     | CTRL | HOME | DOWN | END |
         // --------------------------------------------------------------------------------------------------
       bindings = <
-        &bootloader   &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &sys_reset  &bl BL_TOG
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans             &kp GRAVE &rgb_ug RGB_TOG
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans                    &trans    &rgb_ug RGB_HUI
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &mo ADJUST  &trans    &rgb_ug RGB_HUD
-        &trans &trans &trans               &trans                             &trans &trans &trans &kp HOME    &trans    &kp END
+        &bootloader   &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &sys_reset  &kp C_MUTE
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans             &kp GRAVE &trans
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans                    &trans    &kp C_VOL_UP
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans      &trans    &kp C_VOL_DN
+        &trans &trans &trans               &trans                             &mo ADJUST &trans &trans &kp HOME    &trans    &kp END
       >;
       sensor-bindings = <&bl_encoder>;
     };
@@ -101,11 +87,11 @@
         // |  CTL  |  WIN  |  ALT  |            SPACE               | GLB |     | CTRL | HOME | DOWN | END |
         // --------------------------------------------------------------------------------------------------
       bindings = <
-        &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &trans &trans &bt BT_PRV &bt BT_NXT &bt BT_CLR_ALL  &none
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans           &trans    &none
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans                  &trans    &none
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans    &trans    &none
-        &trans &trans &trans               &trans                             &trans &trans &trans &trans    &trans    &trans
+        &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &trans &trans &bt BT_PRV &bt BT_NXT &bt BT_CLR_ALL  &bl BL_TOG
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans           &trans    &rgb_ug RGB_TOG
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans                  &trans    &rgb_ug RGB_HUI
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans    &rgb_ug RGB_BRI   &rgb_ug RGB_HUD
+        &trans &trans &trans               &trans                             &trans &trans &trans &bl BL_DEC    &rgb_ug RGB_BRD   &bl BL_INC
       >;
       sensor-bindings = <&rgb_encoder>;
     };
